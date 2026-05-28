@@ -36,12 +36,11 @@ jobs:
       run: |
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ vars.ECR_REPO }}
   
-    - name: Tag Docker image
-      run: docker tag bank-app-frontend:latest ${{ vars.ECR_REPO }}/bank-frontend:${{ github.run_number }}
+     - name: Tag Docker image
+      run: docker tag bank-app-frontend:latest ${{ vars.ECR_REPO }}:${{ github.run_number }}
     
     - name: Push image to ECR
-      run: docker push ${{ vars.ECR_REPO }}/bank-frontend:${{ github.run_number }}
-
+      run: docker push ${{ vars.ECR_REPO }}:${{ github.run_number }}
 
     - name: Clean up Docker image locally
       run: |
@@ -77,4 +76,3 @@ jobs:
          git push origin main
 
 
-         
