@@ -36,7 +36,7 @@ jobs:
       run: |
         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${{ vars.ECR_REPO }}
   
-     - name: Tag Docker image
+    - name: Tag Docker image
       run: docker tag bank-app-frontend:latest ${{ vars.ECR_REPO }}:${{ github.run_number }}
     
     - name: Push image to ECR
