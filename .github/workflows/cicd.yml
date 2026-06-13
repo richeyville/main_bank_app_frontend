@@ -17,7 +17,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        repository: Digital-Witch-Cloud-Computing-POD-14/main_bank_app_frontend-02
+        repository: richeyville/main_bank_app_frontend
         ref: main
 
 
@@ -32,7 +32,7 @@ jobs:
     - name: Build container image
       run: |
        docker build \
-       --build-arg REACT_APP_API_URL=https://bankapi.themainpod14.online \
+       --build-arg REACT_APP_API_URL=https://bankapi.richeyville.online \
        -t bank-app-frontend:latest .
 
     - name: Log in to ECR with short-lived credentials
@@ -62,15 +62,15 @@ jobs:
     - name: Checkout manifest repository
       uses: actions/checkout@v4
       with:
-          repository: Digital-Witch-Cloud-Computing-POD-14/kubernetes-manifest
+          repository: richeyville/bankkubernetes-manifest
           token: ${{secrets.GIT_PASSWORD}}
-          path: kubernetes-manifest
+          path: bankkubernetes-manifest
 
     - name: Update manifest and push
       run: |
-        cd kubernetes-manifest
-        git config --global user.email "mondaysammy2005@gmail.com"
-        git config --global user.name "samuel"
+        cd bankkubernetes-manifest
+        git config --global user.email "richeyville@outlook.com"
+        git config --global user.name "richeyville"
 
         # Debug: Let's see the file before we touch it
         cat bank-project/frontend.yaml
