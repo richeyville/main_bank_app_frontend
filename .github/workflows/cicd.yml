@@ -63,7 +63,7 @@ jobs:
       uses: actions/checkout@v4
       with:
           repository: richeyville/bankkubernetes-manifest
-          token: ${{secrets.GIT_PASSWORD}}
+          token: ${{secrets.MANIFEST_REPO_TOKEN}}
           path: bankkubernetes-manifest
 
     - name: Update manifest and push
